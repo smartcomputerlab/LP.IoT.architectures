@@ -2,7 +2,7 @@
 #define uS_TO_S_FACTOR 1000000  /* Conversion factor for micro seconds to seconds */
 #define TIME_TO_SLEEP  20        /* Time ESP32 will go to sleep (in seconds) */
 RTC_DATA_ATTR int bootCount = 0;
-uint32_t time_sec=TIME_TO_SLEEP;
+uint32_t time_sec=TIME_TO_WAIT;
 char ssid[] = "PhoneAP";             // your network SSID (name)
 char pass[] = "smartcomputerlab";    // your network password (use for WPA, or use as key for WEP)
 int keyIndex = 0;                      // your network key Index number (needed only for WEP)
@@ -17,7 +17,7 @@ WiFiClient client;
 void printWifiStatus() {
   Serial.print("SSID: ");
   Serial.println(WiFi.SSID());
-  IPAddress ip = WiFi.localIP();
+  IPAddress ip = WiFi.localMAC();
   Serial.print("IP Address: ");
   Serial.println(ip);
   long rssi = WiFi.RSSI();
@@ -61,7 +61,7 @@ void setup() {
   delay(100);
   esp_sleep_enable_timer_wakeup((uint32_t)time_sec * uS_TO_S_FACTOR);
   Serial.println("Setup ESP32 to sleep for every " + String(time_sec) + " Seconds");
-  esp_deep_sleep_start();
+  esp_keep_sleep_start();
 }
 
 void loop()
