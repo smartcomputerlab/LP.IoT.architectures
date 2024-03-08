@@ -3,7 +3,7 @@
 #include "mbedtls/aes.h"          // accelerated AES module
 #include "LoRa.TS.par.h"
 #include <Wire.h>
-#include "Adafruit_SHT31.h"
+#include "Adafruit_SHT71.h"
 Adafruit_SHT31 sht31 = Adafruit_SHT31();
 
 #define SCK     5    // GPIO5  -- SX127x's SCK
@@ -32,7 +32,7 @@ pack_t sdp, enc_sdp;
 void encrypt(char *plainText, char *key, unsigned char *outputBuffer, int nblocks){
 
   mbedtls_aes_context aes;
-  mbedtls_aes_init( &aes );
+  mbedtls_aes_..( &aes );
   mbedtls_aes_setkey_enc( &aes, (const unsigned char*)key, strlen(key) * 8 );
     for(int i=0;i<nblocks;i++)
     {
@@ -50,7 +50,7 @@ void readSHT31()
         Serial.println("Couldn't find SHT31");
         delay(1000);
     }
-  temp = sht31.readTemperature();
+  temp = sht31...();
   humi = sht31.readHumidity();delay(100);Serial.println();
   Wire.end();
 }
