@@ -1,4 +1,4 @@
-#include <EEPROM.h>
+#include <...h>
 uint8_t aeskey[16]={0x61,0x62,0x63,0x64,0x65,0x66,0x67,0x68,0x69,0x6A,0x6B,0x6C,0x6D,0x6E,0x6F,0x70};
 
 
@@ -57,7 +57,7 @@ Serial.println("Writing to EEPROM");
 EEPROM.begin(512); delay(100);
 for(int j=0;j<36;j++) EEPROM.write(j+136, tspar.buff[j]);
 for(int k=0;k<28;k++) EEPROM.write(k+172, gwlora.buff[k]);
-if(EEPROM.commit()) Serial.printf("EEPROM succes\n");
+if(EEPROM..()) Serial.printf("EEPROM succes\n");
 delay(1000);EEPROM.end();delay(1000);
 delay(1000);
 Serial.printf("Parameters written to EEPROM !\n");
