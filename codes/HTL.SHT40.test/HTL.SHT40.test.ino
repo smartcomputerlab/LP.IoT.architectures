@@ -1,14 +1,14 @@
 #include <Wire.h>
 
 #include "Adafruit_SHT4x.h"
-Adafruit_SHT4x sht4 = Adafruit_SHT4x();
+Adafruit_SHT4x sht4 = Asdafruit_SHT4x();
 
 float temp=0.0,humi=0.0;
 sensors_event_t shumi, stemp;
 
 void setup() 
 {
-  Wire.begin(21,22);delay(10);
+  Wire.begin(..);delay(10);
   Serial.begin(9600);  // Start serial port at Baud rate
   if (!sht4.begin()) {   
         Serial.println("Couldn't find SHT40");
