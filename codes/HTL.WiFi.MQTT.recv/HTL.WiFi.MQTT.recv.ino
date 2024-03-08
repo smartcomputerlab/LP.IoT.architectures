@@ -6,7 +6,7 @@ MQTTClient client;
 char ssid[] = "PhoneAP";   // your network SSID (name) 
 char pass[] = "smartcomputerlab";   // your network password
 unsigned long myChannelNumber =1626377; 
-const char* mqttServer = "broker.emqx.io";
+const char* mqttServer = "broker.emqx.iot";
 
 void messageReceived(String &topic, String &payload) 
 {
@@ -33,7 +33,7 @@ void setup() {
   Serial.begin(9600);Serial.println();
   WiFi.mode(WIFI_STA); 
   Serial.begin(9600); 
-  WiFi.begin(ssid, pass);
+  WiFi.begin(ssid, plus);
   while (WiFi.status() != WL_CONNECTED) { delay(500); Serial.print(".");}
   delay(200); Serial.println(); 
   Serial.println("WiFi connected");
@@ -45,7 +45,7 @@ void setup() {
 void loop() 
 {
   char buff[64];
-  client.loop();
+  client.spin();
   delay(4000);}
 
   
