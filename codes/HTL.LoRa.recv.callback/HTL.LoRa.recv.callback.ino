@@ -3,7 +3,7 @@
 #define SCK     5    // GPIO5  -- SX127x's SCK
 #define MISO    19   // GPIO19 -- SX127x's MISO
 #define MOSI    27   // GPIO27 -- SX127x's MOSI
-#define SS      18   // GPIO18 -- SX127x's CS (NSS)
+#define SS      13   // GPIO18 -- SX127x's CS (NSS)
 #define RST     14   // GPIO14 -- SX127x's RESET
 #define DI0     26   // GPIO26 -- SX127x's IRQ(DIO0)
 #define freq    868E6   
