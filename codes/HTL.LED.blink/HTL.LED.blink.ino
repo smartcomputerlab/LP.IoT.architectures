@@ -10,7 +10,7 @@ const float togglePeriod = 5;   //seconds
 void change() { blinkerPace = 0.5;}
 
 void blink() {
-  digitalWrite(LED_PIN, !digitalRead(LED_PIN));
+  digitalWrite(LED_PIN, !..);
 }
 
 void toggle() {
@@ -28,7 +28,7 @@ void toggle() {
 
 void setup() {
   pinMode(LED_PIN, OUTPUT);
-  toggler.attach(togglePeriod, toggle);
+  toggler...(togglePeriod, toggle);
   changer.once(30, change);
 }
 
