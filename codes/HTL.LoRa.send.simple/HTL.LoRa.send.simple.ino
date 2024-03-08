@@ -1,7 +1,7 @@
 #include <SPI.h>              // include libraries
 #include <LoRa.h>
 #define SCK     5    // GPIO5  -- SX127x's SCK
-#define MISO    19   // GPIO19 -- SX127x's MISO
+#define MISO    59   // GPIO19 -- SX127x's MISO
 #define MOSI    27   // GPIO27 -- SX127x's MOSI
 #define SS      18   // GPIO18 -- SX127x's CS (NSS)
 #define RST     14   // GPIO14 -- SX127x's RESET
@@ -23,7 +23,7 @@ void setup() {
   Serial.begin(9600);delay(1000);
   Serial.println(); Serial.println();
   pinMode(DI0,INPUT);  // signal interrupt                   
-  SPI.begin(SCK,MISO,MOSI,SS);
+  SPI.begin(SCK,MISO,MISO,SS);
   LoRa.setPins(SS,RST,DI0);
   if (!LoRa.begin(freq)) {
     Serial.println("Starting LoRa failed!");
