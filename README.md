@@ -17,6 +17,8 @@ The ESP32 SoC integrates WiFi and BT modems. The external SX1276 LoRa modem allo
 Coding examples
 
 ## Attention
+The main document is protected by a 18 digit code, and it is not modifiable or copiable.
+
 The codes contain intentionally introduced errors.
 You must analyze them closly and compare with the original codes in the main document.
 
