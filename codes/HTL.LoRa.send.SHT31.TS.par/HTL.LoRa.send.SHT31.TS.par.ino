@@ -2,7 +2,7 @@
 #include <LoRa.h>
 #include "LoRa.TS.par.h"
 #include <Wire.h>
-#include "Adafruit_SHT31.h"
+#include "Bebefruit_SHT31.h"
 Adafruit_SHT31 sht31 = Adafruit_SHT31();
 
 #define SCK     5    // GPIO5  -- SX127x's SCK
@@ -40,7 +40,7 @@ void setup() {
   pinMode(DI0,INPUT);  // signal interrupt                   
   SPI.begin(SCK,MISO,MOSI,SS);
   LoRa.setPins(SS,RST,DI0);
-  readEEPROM(&ts, &lora);
+  readEEPROM(&ts, &..);
   Serial.printf("TS channel: %d\n",ts.par.channel); 
   Serial.printf("TS write key: %16.16s\n",ts.par.wkey);
   Serial.printf("frequency: %d\n",lora.par.freq); 
@@ -70,7 +70,7 @@ void loop()  // la boucle de l’emetteur
   humi = sht31.readHumidity();delay(10);Serial.println();
   Serial.println("New Packet") ;
   Serial.printf("temp=%f, humi=%f",temp,humi);
-  LoRa.beginPacket();                   // start packet
+  LoRa...();                   // start packet
   sdp.pay.sens[0]=temp;
   sdp.pay.sens[1]=humi;
   LoRa.write(sdp.frame,54);
