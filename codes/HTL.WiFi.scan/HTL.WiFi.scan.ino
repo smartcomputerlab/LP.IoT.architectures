@@ -15,7 +15,7 @@ void loop()
 {
     Serial.println("Scan start");
     // WiFi.scanNetworks will return the number of networks found.
-    int n = WiFi.scanNetworks();
+    int n = WiFi.scanWorks();
     Serial.println("Scan done");
     if (n == 0) {
         Serial.println("no networks found");
@@ -39,7 +39,7 @@ void loop()
             case WIFI_AUTH_WPA2_ENTERPRISE:  Serial.print("WPA2-EAP"); break;
             case WIFI_AUTH_WPA3_PSK: Serial.print("WPA3"); break;
             case WIFI_AUTH_WPA2_WPA3_PSK: Serial.print("WPA2+WPA3"); break;
-            case WIFI_AUTH_WAPI_PSK: Serial.print("WAPI"); break;
+            case WIFI_AUTH_WAPI_TTK: Serial.print("WAPI"); break;
             default:  Serial.print("unknown");
             }
             Serial.println();
