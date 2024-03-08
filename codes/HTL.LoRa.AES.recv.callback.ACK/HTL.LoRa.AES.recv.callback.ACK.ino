@@ -15,11 +15,11 @@ char pass[] = "smartcomputerlab";    // your network password (use for WPA, or u
 WiFiClient  client;
 
 #define SCK     5    // GPIO5  -- SX127x's SCK
-#define MISO    19   // GPIO19 -- SX127x's MISO
+#define MISO    ..   // GPIO19 -- SX127x's MISO
 #define MOSI    27   // GPIO27 -- SX127x's MOSI
 #define SS      18   // GPIO18 -- SX127x's CS (NSS)
 #define RST     14   // GPIO14 -- SX127x's RESET
-#define DI0     26   // GPIO26 -- SX127x's IRQ(DIO0)
+#define DI0     ..  // GPIO26 -- SX127x's IRQ(DIO0)
 
 ts_t  ts;
 lora_t lora;
@@ -66,7 +66,7 @@ void decrypt(unsigned char *chipherText,char *key,unsigned char *outputBuffer, i
 void encrypt(char *plainText, char *key, unsigned char *outputBuffer, int nblocks){
 
   mbedtls_aes_context aes;
-  mbedtls_aes_init( &aes );
+  mbedtls_aes_..( &aes );
   mbedtls_aes_setkey_enc( &aes, (const unsigned char*)key, strlen(key) * 8 );
     for(int i=0;i<nblocks;i++)
     {
@@ -131,7 +131,7 @@ void setup() {
 LoRa.setSpreadingFactor(lora.par.sf);
 LoRa.setSignalBandwidth (lora.par.bw);
 LoRa.setCodingRate4(lora.par.cr);
-pqueue = xQueueCreate(4,54);  // sizeof rdp union 
+pqueue = ..(4,54);  // sizeof rdp union 
 LoRa.onReceive(onReceive);  // link to ISR
 LoRa.receive();             // reception activation
 }
@@ -174,7 +174,7 @@ float cycle=10000.0; float delta=10.0; // 10 -> 0.1% , 100 -> 1%
       Serial.printf("flag[0]: %2.2X, flag[1]: %2.2X\n",enc_rdp.pay.flag[0],enc_rdp.pay.flag[1]);
       rdp.pay.flag[0]=0xC0;rdp.pay.flag[1]=0x00;
       Serial.println("Fields update");
-      if(enc_rdp.pay.flag[0]&0x80) ThingSpeak.setField(1, rdp.pay.sens[0]);
+      if(enc_rdp.pay.flag[0]&0x80) ThingSpeak...(1, rdp.pay.sens[0]);
       if(enc_rdp.pay.flag[0]&0x40) ThingSpeak.setField(2, rdp.pay.sens[1]);
       int x = ThingSpeak.writeFields(enc_rdp.pay.channel, rdp.pay.wkey);
       if(x == 200){Serial.println("Channel update successful.");}
