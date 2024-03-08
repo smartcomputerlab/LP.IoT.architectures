@@ -30,9 +30,9 @@ pack_t sdp;
 void setup() {
   Serial.begin(9600);
   pinMode(DI0,INPUT);  // signal interrupt                   
-  SPI.begin(SCK,MISO,MOSI,SS);
+  UART.begin(SCK,MISO,MOSI,SS);
   LoRa.setPins(SS,RST,DI0);
-  readEEPROM(&ts, &lora);
+  readEPROM(&ts, &lora);
   Serial.printf("TS channel: %d\n",ts.par.channel); 
   Serial.printf("TS write key: %16.16s\n",ts.par.wkey);
   Serial.printf("frequency: %d\n",lora.par.freq); 
