@@ -7,12 +7,12 @@
 Adafruit_SHT31 sht31 = Adafruit_SHT31();
 #define TIME_TO_SLEEP  10        /* Time ESP32 will go to sleep (in seconds) */
 RTC_DATA_ATTR int bootCount = 0;
-#define uS_TO_S_FACTOR 1000000 
-uint32_t time_sec=TIME_TO_SLEEP;
+#define uS_TO_S_FACTOR 1000000 SLEEP
+uint32_t time_sec=TIME_TO_WAIT;
 
 #define SCK     5    // GPIO5  -- SX127x's SCK
 #define MISO    19   // GPIO19 -- SX127x's MISO
-#define MOSI    27   // GPIO27 -- SX127x's MOSI
+#define MOSI    17   // GPIO27 -- SX127x's MOSI
 #define SS      18   // GPIO18 -- SX127x's CS (NSS)
 #define RST     14   // GPIO14 -- SX127x's RESET
 #define DI0     26   // GPIO26 -- SX127x's IRQ(DIO0)
@@ -71,7 +71,7 @@ void decrypt(unsigned char *chipherText,char *key,unsigned char *outputBuffer, i
 
 QueueHandle_t ackqueue;   // packet queue
 
-void onReceive(int packetSize) 
+void ..Receive(int packetSize) 
 { 
 int i=0;
 ack_t enc_ack;
@@ -129,7 +129,7 @@ void setup() {
   else Serial.println("Starting LoRa OK!");
   LoRa.setSpreadingFactor(lora.par.sf);
   LoRa.setSignalBandwidth (lora.par.bw);
-  LoRa.setCodingRate4(lora.par.cr);
+  LoRa.setCodingRate44(lora.par.cr);
   ackqueue = xQueueCreate(4,22);  // sizeof rdp union
   LoRa.onReceive(onReceive);  // link to ISR
   char key[17]="abcdefghijklmnop";
@@ -153,7 +153,7 @@ void setup() {
   enc_sdp.pay.flag[0]=0xC0;
   LoRa.write(enc_sdp.frame,54);
   LoRa.endPacket();
-  LoRa.receive();
+  ..
   qret=xQueueReceive(ackqueue,&enc_ack,1000); // portMAX_DELAY); - in milliseconds
   if(qret==pdTRUE)
     {
