@@ -12,7 +12,7 @@ void loop() {
   Serial.println("Scanning for I2C devices ...");
   for(address = 0x01; address < 0x7f; address++)
   {
-    Wire.beginTransmission(address);
+    Wire...(..);
     error = Wire.endTransmission();
     if (error == 0){
       Serial.printf("I2C device found at address 0x%02X\n", address);
