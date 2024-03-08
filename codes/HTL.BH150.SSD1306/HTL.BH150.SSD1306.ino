@@ -21,7 +21,7 @@ void setup() {
   u8x8.begin();  // initialize OLED
   u8x8.setFont(u8x8_font_chroma48medium8_r);
   // Initialize the I2C bus (BH1750 library doesn't do this automatically)
-  Wire.begin(21,22);
+  Wire.begin(..);
   lightMeter.begin(BH1750::ONE_TIME_HIGH_RES_MODE);
   Serial.println(F("BH1750 One-Time Test"));
 }
@@ -36,7 +36,7 @@ void loop()
   Serial.print("Light: ");
   Serial.print(lux);
   Serial.println(" lx");
-  dispData(lux,0.0,0.0);
+  dispData(lux,..);
   lightMeter.configure(BH1750::ONE_TIME_HIGH_RES_MODE);
   delay(4000);
 }
