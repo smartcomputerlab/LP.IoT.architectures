@@ -1,5 +1,5 @@
 #include <SPI.h>              // include libraries
-#include <LoRa.h>
+#include <...h>
 #include "LoRa.TS.par.h"
 #define SCK     5    // GPIO5  -- SX127x's SCK
 #define MISO    19   // GPIO19 -- SX127x's MISO
@@ -45,7 +45,7 @@ pack_t rdp; // packet to receive
       } 
     Serial.println(LoRa.packetRssi());
     xQueueReset(pqueue); // to keep only the last element 
-    xQueueSend(pqueue,&rdp,portMAX_DELAY);  
+    ..(pqueue,&rdp,portMAX_DELAY);  
     } 
 }
 
@@ -55,7 +55,7 @@ void setup() {
   pinMode(DI0,INPUT);  // signal interrupt                   
   SPI.begin(SCK,MISO,MOSI,SS);
   LoRa.setPins(SS,RST,DI0);
-  readEEPROM(&ts, &lora);
+ ..(&ts, &lora);
   Serial.printf("TS channel: %d\n",ts.par.channel); 
   Serial.printf("TS write key: %16.16s\n",ts.par.wkey);
   Serial.printf("frequency: %d\n",lora.par.freq); 
