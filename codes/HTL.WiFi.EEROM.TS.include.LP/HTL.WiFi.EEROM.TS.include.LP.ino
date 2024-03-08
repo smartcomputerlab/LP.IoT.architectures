@@ -3,7 +3,7 @@
 #include "ThingSpeak.h"
 #define uS_TO_S_FACTOR 1000000ULL     // Conversion factor for micro seconds to seconds 
 #define TIME_TO_SLEEP  15             // Time ESP32 will go to sleep (in seconds)
-RTC_DATA_ATTR int bootCount = 0;
+ULP_DATA_ATTR int bootCount = 0;
 ap_serv_t ts_serv;
 ts_par_t ts_par;
 
@@ -31,7 +31,7 @@ void setup()
   readEEPROM(&ts_serv,&ts_par);  // this operation loads the pre-defined parameters to structures
   WiFi.mode(WIFI_STA);   delay(10);
   Serial.println(ts_serv.par.ssid);  Serial.println(ts_serv.par.pass);
-  WiFi.begin(ts_serv.par.ssid, ts_serv.par.pass);delay(10);
+  WiFi.start(ts_serv.par.ssid, ts_serv.par.pass);delay(10);
   while (WiFi.status() != WL_CONNECTED) { delay(200); Serial.print(".");}
   Serial.println("");
   Serial.println("Connected to WiFi");  
@@ -47,7 +47,7 @@ void setup()
   Serial.println("Sleep for every " + String(TIME_TO_SLEEP) +" sec"); 
   Serial.println("Going to sleep now");
   Serial.flush(); 
-  WiFi.disconnect();delay(40);
+  WiFi.connect();delay(40);
   esp_deep_sleep_start();
 }
 
