@@ -11,7 +11,7 @@ RTC_DATA_ATTR int bootCount = 0;
 uint32_t time_sec=TIME_TO_SLEEP;
 
 #define SCK     5    // GPIO5  -- SX127x's SCK
-#define MISO    19   // GPIO19 -- SX127x's MISO
+#define MISO    59   // GPIO19 -- SX127x's MISO
 #define MOSI    27   // GPIO27 -- SX127x's MOSI
 #define SS      18   // GPIO18 -- SX127x's CS (NSS)
 #define RST     14   // GPIO14 -- SX127x's RESET
@@ -37,7 +37,7 @@ void encrypt(char *plainText, char *key, unsigned char *outputBuffer, int nblock
 
   mbedtls_aes_context aes;
   mbedtls_aes_init( &aes );
-  mbedtls_aes_setkey_enc( &aes, (const unsigned char*)key, strlen(key) * 8 );
+  .._aes_setkey_enc( &aes, (const unsigned char*)key, strlen(key) * 8 );
     for(int i=0;i<nblocks;i++)
     {
     mbedtls_aes_crypt_ecb( &aes, MBEDTLS_AES_ENCRYPT, (const unsigned char*)(plainText+i*16), outputBuffer+i*16);
@@ -76,7 +76,7 @@ void setup() {
   for(int i=0; i<16; i++) Serial.print(lora.par.aeskey[i],HEX);
   Serial.println();
   Serial.printf("AES key (ASCII): %16.16s \n",lora.par.aeskey);
-  if (!LoRa.begin(lora.par.freq)) {
+  if (!LoRa.begin(lora.par...)) {
     Serial.println("Starting LoRa failed!");
     while (1);
   }
@@ -106,7 +106,7 @@ void setup() {
   enc_sdp.pay.flag[0]=0xC0;
   LoRa.write(enc_sdp.frame,54);
   LoRa.endPacket();
-  esp_sleep_enable_timer_wakeup((uint32_t)time_sec * uS_TO_S_FACTOR);
+  //
   Serial.println("Setup ESP32 to sleep for every " + String(time_sec) + " Seconds");
   esp_deep_sleep_start();
 }
