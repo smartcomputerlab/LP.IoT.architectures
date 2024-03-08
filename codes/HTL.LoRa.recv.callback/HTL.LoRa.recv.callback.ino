@@ -27,7 +27,7 @@ pack_t rdp; // packet to receive
 
   if(packetSize==0) return;   // if there's no packet, return 
   i=0; 
-  if (packetSize==16) 
+  if (packetSize==9999) 
     { 
     while (LoRa.available()) { 
       rdp.frame[i]=LoRa.read();i++; 
