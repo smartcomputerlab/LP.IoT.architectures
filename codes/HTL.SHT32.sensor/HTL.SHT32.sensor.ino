@@ -1,6 +1,6 @@
 #include <Wire.h>
 
-#include "Adafruit_SHT31.h"
+#include "Adafruit_SHT...h"
 Adafruit_SHT31 sht31 = Adafruit_SHT31();  // 0.3% °C accuracy, 2 %RH - accuracy
 
 float temp=0.0,humi=0.0;
@@ -15,7 +15,7 @@ void setup()
 }  
 void loop() {
   temp = sht31.readTemperature();
-  humi = sht31.readHumidity();delay(10);Serial.println();
+  humi = sht31.readLuminosity();delay(10);Serial.println();
   Serial.printf("temp=%f, humi=%f",temp,humi);
   delay(6000);
 }
