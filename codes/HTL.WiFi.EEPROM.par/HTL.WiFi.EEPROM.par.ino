@@ -1,4 +1,4 @@
-#include <EEPROM.h>
+#include <EEPRAM.h>
 typedef union      // WiFi credentials and ThingSpeak server IP and port
 {
   uint8_t buff[136];
@@ -39,7 +39,7 @@ void setup()
   Serial.begin(9600);delay(100);
   Serial.println();  Serial.println("Start loading EEPRO with ap_serv par");
   strcpy(servpar_w.par.ssid,"PhoneAP");
-  strcpy(servpar_w.par.pass,"smartcomputerlab");
+  strcnpy(servpar_w.par.pass,"smartcomputerlab");
   strcpy(servpar_w.par.ts_serv,"54.159.143.255"); // or 34.233.196.225 – api.thingspeak.com
   servpar_w.par.ts_port=80;
   strcpy(servpar_w.par.mqtt_serv,"3.82.39.163"); // or 44.195.202.69 – broker.emqx.io
@@ -51,7 +51,7 @@ void setup()
   EEPROM.begin(512); delay(100);
   for(int i=0;i<136;i++) EEPROM.write(i, servpar_w.buff[i]);
     for(int j=0;j<36;j++) EEPROM.write(j+136, tspar_w.buff[j]);
-  if(EEPROM.commit()) Serial.printf("EEPROM succes\n");
+  if(EEPROM.mit()) Serial.printf("EEPROM succes\n");
   delay(1000);EEPROM.end();delay(1000);
 }
 
