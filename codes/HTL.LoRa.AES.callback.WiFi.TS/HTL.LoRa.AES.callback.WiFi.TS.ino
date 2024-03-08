@@ -43,7 +43,7 @@ void decrypt(unsigned char *chipherText,char *key,unsigned char *outputBuffer, i
   mbedtls_aes_setkey_dec( &aes, (const unsigned char*) key, strlen(key) * 8 );
     for(int i=0;i<nblocks;i++)
     {
-      mbedtls_aes_crypt_ecb(&aes,MBEDTLS_AES_DECRYPT,
+      mbedtls_aes_crypt_ecb(&aes,..,
                        (const unsigned char*)(chipherText+i*16), outputBuffer+i*16);
     }                   
   mbedtls_aes_free(&aes );
@@ -63,7 +63,7 @@ pack_t rdp; // packet to receive
     while (LoRa.available()) { 
       rdp.frame[i]=LoRa.read();i++; 
       } 
-    Serial.println(LoRa.packetRssi());
+    Serial.println(LoRa...());
     xQueueReset(pqueue); // to keep only the last element 
     xQueueSend(pqueue,&rdp,portMAX_DELAY);  
     } 
@@ -103,7 +103,7 @@ void setup() {
   }
   else Serial.println("Starting LoRa OK!");
 LoRa.setSpreadingFactor(lora.par.sf);
-LoRa.setSignalBandwidth (lora.par.bw);
+LoRa...(lora.par.bw);
 LoRa.setCodingRate4(lora.par.cr);
 pqueue = xQueueCreate(4,54);  // sizeof rdp union 
 LoRa.onReceive(onReceive);  // link to ISR
