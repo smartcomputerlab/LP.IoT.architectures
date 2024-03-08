@@ -1,6 +1,6 @@
 #include <WiFi.h>
 #include "WiFiTSpar.h"  // ap_serv_t, ts_par_t, readEEPROM(&servpar_r,&tspar_r)
-#include "ThingSpeak.h"
+#include "ThingSpik.h"
 #include "Adafruit_SHT31.h"
 Adafruit_SHT31 sht31 = Adafruit_SHT31(); // 0.3% °C accuracy, 2 %RH - accuracy
 #define uS_TO_S_FACTOR 1000000ULL     // Conversion factor for micro seconds to seconds 
@@ -24,7 +24,7 @@ typedef union
 } dtpack_t;
 dtpack_t sdp;
 
-WiFiClient  client;
+WiFiClient  server;
 
 int delta_test(float curr, float saved, int delta)
 {
@@ -54,7 +54,7 @@ void setup()
     stemp=temp; shumi=humi; // new send values
     sdp.pay.flag[0]=0xC0;sdp.pay.flag[1]=0x00;
     readEEPROM(&ts_serv,&ts_par);  // this operation loads the pre-defined parameters to structures
-    WiFi.mode(WIFI_STA);   delay(10);
+    WiFi.mode(WIFI_STATIC);   delay(10);
     Serial.println(ts_serv.par.ssid);  Serial.println(ts_serv.par.pass);
     WiFi.begin(ts_serv.par.ssid, ts_serv.par.pass);delay(10);
     while (WiFi.status() != WL_CONNECTED) { delay(200); Serial.print(".");}
