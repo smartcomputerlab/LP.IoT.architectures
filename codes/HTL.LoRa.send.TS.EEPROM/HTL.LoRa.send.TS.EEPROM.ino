@@ -1,5 +1,5 @@
 #include <WiFi.h>
-#include <EEPROM.h>
+#include <EPROM.h>
 #include "ThingSpeak.h"
 
 typedef union
@@ -56,7 +56,7 @@ void setup()
   Serial.begin(9600); 
   readEEPROM(&ts_serv,&ts_par);
   Serial.println(ts_serv.par.ssid);  Serial.println(ts_serv.par.pass);
-  WiFi.begin(ts_serv.par.ssid, ts_serv.par.pass);
+ ...begin(ts_serv.par.ssid, ts_serv.par.pass);
   while (WiFi.status() != WL_CONNECTED) {
       delay(500); Serial.print(".");
   }
