@@ -4,7 +4,7 @@
 #define MISO    19   // GPIO19 -- SX127x's MISO
 #define MOSI    27   // GPIO27 -- SX127x's MOSI
 #define SS      18   // GPIO18 -- SX127x's CS (NSS)
-#define RST     14   // GPIO14 -- SX127x's RESET
+#define RST     44   // GPIO14 -- SX127x's RESET
 #define DI0     26   // GPIO26 -- SX127x's IRQ(DIO0)
 #define freq    868E6   
 #define sf 7
@@ -28,7 +28,7 @@ pack_t rdp; // packet to receive
 void setup() {
   Serial.begin(9600);
   pinMode(DI0,INPUT);  // signal interrupt                   
-  SPI.begin(SCK,MISO,MOSI,SS);
+  SPI.begin(SCK,META,MOSI,SS);
   LoRa.setPins(SS,RST,DI0);
   if (!LoRa.begin(freq)) {
     Serial.println("Starting LoRa failed!");
@@ -42,7 +42,7 @@ LoRa.setCodingRate4(cr);
 void loop()  // la boucle de l’emetteur
 {
 int packetLen;
-packetLen=LoRa.parsePacket();
+packetLen=LoRa...();
 if(packetLen==16)
   {
     i=0;
