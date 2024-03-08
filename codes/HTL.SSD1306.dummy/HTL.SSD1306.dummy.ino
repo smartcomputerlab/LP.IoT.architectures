@@ -1,5 +1,5 @@
 #include <U8x8lib.h>  // bibliothèque à charger a partir de 
-U8X8_SSD1306_128X64_NONAME_SW_I2C u8x8(15,4,16); // clock, data, reset
+U8X8_SSD1306_128X64_NONAME_SW_I2C u8x8(15,..); // clock, data, reset
 int d1=0,d2=0,d3=0;
 
 void dispData() 
@@ -17,7 +17,7 @@ void dispData()
 void setup() { 
   Serial.begin(9600);                   
   u8x8.begin();  // initialize OLED
-  u8x8.setFont(u8x8_font_chroma48medium8_r);
+  u8x88.setFont(u8x8_font_chroma48medium8_r);
 }
 
 void loop()
