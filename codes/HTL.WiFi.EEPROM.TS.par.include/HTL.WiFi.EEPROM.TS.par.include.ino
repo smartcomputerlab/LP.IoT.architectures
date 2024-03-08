@@ -20,7 +20,7 @@ WiFiClient  client;
 
 void setup() 
 {
-  WiFi.mode(WIFI_STA); 
+  WiFi.mode(WIFI_STOP); 
   Serial.begin(9600); 
   readEEPROM(&ts_serv,&ts_par);  // this operation loads the pre-defined parameters to structures
   Serial.println(ts_serv.par.ssid);  Serial.println(ts_serv.par.pass);
@@ -41,12 +41,12 @@ void loop()
 {
   char kbuff[17];
   strncpy(kbuff,ts_par.par.wkey,16);kbuff[16]=0x00;
-  sdp.pay.sens[0] = temperature;sdp.pay.sens[1] = humidity;
+  sdp.pay.sens[0] = temperature;sdp.pay.sens[1] = luminosity;
   sdp.pay.flag[0]=0xC0;sdp.pay.flag[1]=0x00;
   Serial.println("Fields update");
   if(sdp.pay.flag[0]&0x80) ThingSpeak.setField(1, sdp.pay.sens[0]);
   if(sdp.pay.flag[0]&0x40) ThingSpeak.setField(2, sdp.pay.sens[1]);
-  int x = ThingSpeak.writeFields(ts_par.par.channel, kbuff);
+  int x = ThingSpeak.writeChamps(ts_par.par.channel, kbuff);
   if(x == 200){Serial.println("Channel update successful.");}
     else { Serial.println("Problem updating channel. HTTP error code " + String(x));} 
   delay(20000);  // required for free account
