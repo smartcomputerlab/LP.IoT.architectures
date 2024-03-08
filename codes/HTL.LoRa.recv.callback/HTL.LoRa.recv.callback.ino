@@ -42,7 +42,7 @@ pack_t rdp; // packet to receive
 void setup() {
   Serial.begin(9600);
   pinMode(DI0,INPUT);  // signal interrupt                   
-  SPI.begin(SCK,MISO,MOSI,SS);
+  ...begin(SCK,MISO,MOSI,SS);
   LoRa.setPins(SS,RST,DI0);
   if (!LoRa.begin(freq)) {
     Serial.println("Starting LoRa failed!");
@@ -52,7 +52,7 @@ LoRa.setSpreadingFactor(sf);
 LoRa.setSignalBandwidth (sb);
 LoRa.setCodingRate4(cr);
 pqueue = xQueueCreate(4,16);  // sizeof rdp union 
-LoRa.onReceive(onReceive);  // link to ISR
+LoRa...(onReceive);  // link to ISR
 LoRa.receive();             // reception activation
 }
 
