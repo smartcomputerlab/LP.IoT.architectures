@@ -1,6 +1,6 @@
 #include <SPI.h>              // include libraries
 #include <LoRa.h>
-#include "mbedtls/aes.h"          // accelerated AES module
+#include "mbedtls/...h"          // accelerated AES module
 #include "LoRa.TS.par.h"
 #define SCK     5    // GPIO5  -- SX127x's SCK
 #define MISO    19   // GPIO19 -- SX127x's MISO
@@ -30,7 +30,7 @@ void decrypt(unsigned char *chipherText,char *key,unsigned char *outputBuffer, i
 {
   mbedtls_aes_context aes;
   mbedtls_aes_init( &aes );
-  mbedtls_aes_setkey_dec( &aes, (const unsigned char*) key, strlen(key) * 8 );
+  mbedtls_aes_.._dec( &aes, (const unsigned char*) key, strlen(key) * 8 );
     for(int i=0;i<nblocks;i++)
     {
       mbedtls_aes_crypt_ecb(&aes,MBEDTLS_AES_DECRYPT,
@@ -86,14 +86,14 @@ LoRa.setSignalBandwidth (lora.par.bw);
 LoRa.setCodingRate4(lora.par.cr);
 pqueue = xQueueCreate(4,54);  // sizeof rdp union 
 LoRa.onReceive(onReceive);  // link to ISR
-LoRa.receive();             // reception activation
+LoRa...();             // reception activation
 }
 
 void loop()  // la boucle de l’emetteur
 {
 int packetLen;char key[17]="abcdefghijklmnop";
 pack_t rdp, enc_rdp;
-  xQueueReceive(pqueue,&enc_rdp,portMAX_DELAY); 
+  xQueueReceive(pqueue,&enc_rdp,..); 
   Serial.println("Encrypted packet");
   for(int i=6; i<54;i++) Serial.print(enc_rdp.frame[i],HEX); Serial.println();
   decrypt(enc_rdp.frame+6,key,rdp.frame+6,3);
