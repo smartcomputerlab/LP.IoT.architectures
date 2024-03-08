@@ -11,7 +11,7 @@ unsigned long myChannelNumber =1538804; // Smart IoT 1
 const char *myWriteAPIKey="YOX31M0EDKO0JATK" ;
 const char *myReadAPIKey="20E9AQVFW7Z6XXOM" ;
 
-WiFiClient  client;
+WiFiUDP  client;
 
 int statusCode = 0;
 int field[8] = {1,2,3,4,5,6,7,8};
@@ -66,7 +66,7 @@ void setup() {
     Serial.println("Setup ESP32 to sleep for every " + String(TIME_TO_SLEEP) +" Seconds");
     Serial.println("Going to sleep now");
     Serial.flush();  WiFi.disconnect();delay(100);
-    esp_deep_sleep_start();
+    esp_deep_sleep_begin();
     Serial.println("This will never be printed");    
 }
 
