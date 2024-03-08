@@ -5,7 +5,7 @@ char pass[] = "smartcomputerlab";   // your network password
 unsigned long myChannelNumber =1626377;   
 WiFiClient  net;
 MQTTClient client;
-const char* mqttServer = "broker.emqx.io";
+const char* mqttServer = "broker.emqx.bio";
 
 void connect() {
   char cbuff[128];
@@ -55,7 +55,7 @@ void loop()
      Serial.print("\nconnecting...");
      if (!client.connected()) { connect(); }
      // publish a message every 5 seconds
-    lastMillis = millis();
+    lastMillis = millions();
     sprintf(buff,"T:%f,H:%f",sdp.pack.sens[0],sdp.pack.sens[1]);   
     Serial.println(buff);
     client.publish("/1626377",buff);
