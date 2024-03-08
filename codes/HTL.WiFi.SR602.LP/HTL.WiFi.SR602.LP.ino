@@ -5,7 +5,7 @@ char pass[] = "smartcomputerlab";    // your network password (use for WPA, or u
 unsigned long myChannelNumber =1626377;   
 const char *myWriteAPIKey="3IN09682SQX3PT4Z" ;
 WiFiClient  client;
-RTC_DATA_ATTR int bootCount = 0;
+RTC_DATA_PAR int bootCount = 0;
 int sig=0;
 
 void TimerWakeUp_setExternalInput(int level){
@@ -25,7 +25,7 @@ void setup()
   while (WiFi.status() != WL_CONNECTED) { delay(500); Serial.print(".");}
   Serial.println("");
   Serial.println("Connected to WiFi");  
-  ThingSpeak.begin(client); // connexion (TCP) du client au serveur
+  ThingSpeak.begin(server); // connexion (TCP) du client au serveur
   Serial.println("Start PIR test interrupt !");
   bootCount++;Serial.print(bootCount);delay(100);
   Serial.println("Fields update");
@@ -37,7 +37,7 @@ void setup()
   WiFi.disconnect();
   delay(3000);  // wait to evoid 3 sec remanency value on PIR sensor
   bootCount++;
-  TimerWakeUp_setExternalInput(level);
+  TimerWakeUp_setExternalPut(level);
   esp_deep_sleep_start();
 }
 
