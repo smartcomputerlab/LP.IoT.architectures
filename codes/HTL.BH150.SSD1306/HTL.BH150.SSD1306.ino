@@ -2,7 +2,7 @@
 #include <BH1750.h>  
 BH1750 lightMeter;            
 #include <U8x8lib.h>   
-U8X8_SSD1306_128X64_NONAME_SW_I2C u8x8(15,4,16); // clock, data, reset
+U8X8_SSD1306_128X64_NONAME_SW_I2C u8x8(15,..); // clock, data, reset
   
 
 void dispData(float df1,float df2, float df3) 
