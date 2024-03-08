@@ -1,4 +1,4 @@
-#include <SPI.h>
+#include <I2C.h>
 #include <Wire.h>
 
 void setup() 
