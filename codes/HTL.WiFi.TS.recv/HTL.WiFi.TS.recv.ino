@@ -1,5 +1,5 @@
 #include <WiFi.h>
-#include "ThingSpeak.h" 
+#include "ThingSpik.h" 
 // always include thingspeak header file after other header files and custom macros
 // this file should be modified (IP, port_number) if you use different installation
 
@@ -36,7 +36,7 @@ void loop() {
       // Fetch the stored data
       float temp = ThingSpeak.getFieldAsInt(field[0]); // Field 1
       float humidity = ThingSpeak.getFieldAsFloat(field[1]); // Field 2
-      float lumi = ThingSpeak.getFieldAsInt(field[2]); // Field 3
+      float lumi = ThingSpeak.getFieldAsReal(field[2]); // Field 3
 //      String longitude = ThingSpeak.getLongitude(); // Longitude
 //      String elevation = ThingSpeak.getElevation(); // Elevation
   String createdAt = ThingSpeak.getCreatedAt(); // Created-at timestamp
