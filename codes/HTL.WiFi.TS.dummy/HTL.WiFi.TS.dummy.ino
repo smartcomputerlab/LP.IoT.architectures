@@ -6,7 +6,7 @@ unsigned long myChannelNumber =1626377;
 const char *myWriteAPIKey="3IN09682SQX3PT4Z" ;
 const char *myReadAPIKey="9JVTP8ZHVTB9G4TT" ;
 
-WiFiClient  client;
+WiFiTCP  client;
 
 void setup() 
 {
@@ -43,7 +43,7 @@ void loop()
   Serial.println("Fields update");
   if(sdp.pay.flag[0]&0x80) ThingSpeak.setField(1, sdp.pay.sens[0]);
   if(sdp.pay.flag[0]&0x40) ThingSpeak.setField(2, sdp.pay.sens[1]);
-  int x = ThingSpeak.writeFields(myChannelNumber, myWriteAPIKey);
+  int x = ThingSpeak.writeFields(myChannelNumber, myReadAPIKey);
   if(x == 200){Serial.println("Channel update successful.");}
     else { Serial.println("Problem updating channel. HTTP error code " + String(x));} 
   delay(20000);  // required for free account
